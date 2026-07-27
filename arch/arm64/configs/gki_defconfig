@@ -116,21 +116,6 @@ CONFIG_BLK_INLINE_ENCRYPTION=y
 CONFIG_BLK_INLINE_ENCRYPTION_FALLBACK=y
 CONFIG_IOSCHED_BFQ=y
 CONFIG_BFQ_GROUP_IOSCHED=y
-# I/O scheduler tambahan (mainline block layer, dijamin ada di source GKI) untuk
-# melengkapi BFQ + ADIOS/SSG (lihat bagian marble_defconfig di bawah).
-CONFIG_MQ_IOSCHED_DEADLINE=y
-CONFIG_MQ_IOSCHED_KYBER=y
-# Writeback throttling: cegah I/O background (logcat, backup, sync) membanjiri
-# antrian dan bikin UI nge-lag/freeze saat multitasking berat — penting untuk
-# stabilitas storage UFS 3.1 di SM8450.
-CONFIG_BLK_WBT=y
-CONFIG_BLK_WBT_MQ=y
-# QoS I/O berbasis cgroup (latency-based), melengkapi BLK_CGROUP_IOCOST yang sudah ada.
-CONFIG_BLK_CGROUP_IOLATENCY=y
-# Debugfs blk-mq untuk diagnosa antrian I/O; butuh DEBUG_FS (biasanya sudah y di
-# base defconfig, didefinisikan ulang di sini agar aman kalau dipakai berdiri sendiri).
-CONFIG_DEBUG_FS=y
-CONFIG_BLK_DEBUG_FS=y
 CONFIG_GKI_HACKS_TO_FIX=y
 # CONFIG_CORE_DUMP_DEFAULT_ELF_HEADERS is not set
 CONFIG_BINFMT_MISC=y
@@ -322,7 +307,6 @@ CONFIG_BLK_DEV_LOOP=y
 CONFIG_BLK_DEV_LOOP_MIN_COUNT=16
 CONFIG_BLK_DEV_RAM=y
 CONFIG_BLK_DEV_RAM_SIZE=8192
-CONFIG_BLK_DEV_THROTTLING=y
 CONFIG_SRAM=y
 CONFIG_UID_SYS_STATS=y
 CONFIG_SCSI=y
